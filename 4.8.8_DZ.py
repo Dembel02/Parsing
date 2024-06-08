@@ -9,4 +9,6 @@ response.encoding = 'utf-8'
 soup = BeautifulSoup(response.text, 'html.parser')
 table = soup.find_all('tr')
 for i in table:
-    print(i)
+    table_i = i.find_all('tr')
+    for i in table_i:
+        print(i)
