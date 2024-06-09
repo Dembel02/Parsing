@@ -14,4 +14,5 @@ for i in table:
         j = int(i.text)
         if j % 3 == 0:
             result.append(j)
+            
 print(sum(result))
