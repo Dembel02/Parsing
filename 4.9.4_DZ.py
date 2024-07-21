@@ -31,3 +31,12 @@ price = [x.text for x in soup.find_all('p', class_ = 'price')]
 
 # 4 ------------------------------------------------------------
 # Открываем файл для дополнительной записи данных в таблицу
+with open('res.csv', 'a', encoding='utf-8-sig', newline='') as file:
+    writer = csv.writer(file, delimiter=';')
+    for item, price, descr in zip(name, price, description):
+        
+        # Формируем строку для записи
+        flatten = item, price, *[x.split(':')[1].strip() for x in descr if x]
+        writer.writerow(flatten)
+
+print('Файл res.csv создан')
