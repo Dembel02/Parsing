@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 with open('res.csv', 'w', encoding='utf-8-sig', newline='') as file:
     writer = csv.writer(file, delimiter=';')
     writer.writerow([
-        'Наименование', 'Цена', 'Бренд', 'Тип', 'Подключение', 'Игровая'
+        'Наименование', 'Бренд', 'Форм-фактор', 'Ёмкость', 'Объем буферной памяти', 'Цена'
     ])
 # 1 ------------------------------------------------------------
 
@@ -44,7 +44,7 @@ for i in range (1, pagen+1):
         for item, price, descr in zip(name, price, description):
             
             # Формируем строку для записи
-            flatten = item, price, *[x.split(':')[1].strip() for x in descr if x]
+            flatten = item, *[x.split(':')[1].strip() for x in descr if x], price
             writer.writerow(flatten)
 
 print('Файл res.csv создан')
