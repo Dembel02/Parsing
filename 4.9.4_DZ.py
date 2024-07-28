@@ -25,7 +25,7 @@ for i in range (1, pagen+1):
     response = requests.get(url=url)
     response.encoding = 'utf-8'
     soup = BeautifulSoup(response.text, 'lxml')
-    print(url)
+    #print(url)
 # 3 ------------------------------------------------------------
 # Извлекаем имена товаров и убираем лишние пробелы
     name = [x.text.strip() for x in soup.find_all('a', class_ = 'name_item')]
