@@ -32,7 +32,8 @@ pagen = int(soup.find('div', class_ = 'pagen').find_all('a')[-1].text)
 #     response.encoding = 'utf-8'
 #     soup = BeautifulSoup(response.text, 'lxml')
 #     print(url)
-item_card = soup.find_all('a').get('href')
+item_card = soup.find_all('div', class_ = 'img_box')
+# card_href = item_card.find_all('a')
 for i in item_card:
     print(i)
 url = 'https://parsinger.ru/html/watch/1/1_1.html'
