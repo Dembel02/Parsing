@@ -56,9 +56,9 @@ for i in range(1, pagen + 1):
 
 # 5 --------------------------------------------------------------------
         with open('rezult.csv', 'a', encoding = 'utf-8-sig', newline = '') as file:
-            writer = csv.writer('file', delimiter=';')
-            for item, article, description, in_stock, price, old_price, y in zip(name, article, description, in_stock, price, old_price, y):
+            writer = csv.writer(file, delimiter=';')
+            # for item, article, description, in_stock, price, old_price, y in zip(name, article, description, in_stock, price, old_price, y):
                 # формируем строку для записи
-                flatten = item, article, *[x.split(':')[1].strip() for x in description if x], in_stock, price, old_price, y
-                writer.writerow(flatten)
-                print(flatten)
+            flatten = [name, article] + [x.split(':')[1].strip() for x in description if isinstance(x, str) and x] + [in_stock, price, old_price, y]
+            writer.writerow(flatten)
+            print(flatten)
