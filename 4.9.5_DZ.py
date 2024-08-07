@@ -46,49 +46,22 @@ for href in list_href:
     response_1.encoding = 'utf-8'
     soup = BeautifulSoup(response_1.text, 'lxml')
 
-    try:
-        name = soup.find('p', id='p_header').text
-        article = soup.find('p', class_='article').text.split()[1]
-        description_list = [x.text.split('\\n') for x in soup.find('ul', id='description')]
-        description = [item for sublist in description_list for item in sublist]  # Flattening the list
-        
-        in_stock = int(soup.find('span', id='in_stock').text.split(':')[1])
-        price = soup.find('span', id='price').text.split()[0]
-        old_price = soup.find('span', id='old_price').text.split()[0]
+    name = soup.find('p', id = 'p_header').text
+    article = soup.find('p', class_ = 'article').text.split()[1]
+    description_list = [x.text.split('\n') for x in soup.find('ul', id = 'description')]
+    description = [item for sublist in description_list for item in sublist]
+    in_stock = int(soup.find('span', id = 'in_stock').text.split(':')[1])
+    price = soup.find('span', id = 'price').text
+    old_price = soup.find('span', id = 'old_price').text
 
-        # Запись данных в CSV-файл
-        with open('rezult.csv', 'a', encoding='utf-8-sig', newline='') as file:
-            writer = csv.writer(file, delimiter=';')
-            flatten = [name, article] + description + [in_stock, price, old_price, href]
-            writer.writerow(flatten)
-            print(flatten)
+# 4 ---------------------------------------------------------------------
 
-        time.sleep(1)  # Задержка между запросами
+# 5 --------------------------------------------------------------------
+    with open('rezult.csv', 'a', encoding = 'utf-8-sig', newline = '') as file:
+        writer = csv.writer(file, delimiter=';')
 
-    except Exception as e:
-        print(f"Ошибка при парсинге {url_1}: {e}")
+            # формируем строку для записи
+        flatten = name, article, *[x.split(':')[1].strip() for x in description if ':' in x], in_stock, price, old_price, url_1
 
-# # print(list_href)
-#         url_1 = f'https://parsinger.ru/html/{y}'
-#         response_1 = requests.get(url=url_1)
-#         response_1.encoding = 'utf-8'
-#         soup = BeautifulSoup(response_1.text, 'lxml')
-
-#         name = soup.find('p', id = 'p_header').text
-#         article = soup.find('p', class_ = 'article').text.split()[1]
-#         description = [x.text.split('\n') for x in soup.find('ul', id = 'description')]
-#         in_stock = int(soup.find('span', id = 'in_stock').text.split(':')[1])
-#         price = soup.find('span', id = 'price').text.split()[0]
-#         old_price = soup.find('span', id = 'old_price').text.split()[0]
-#         # print(name)
-# # 4 ---------------------------------------------------------------------
-
-# # 5 --------------------------------------------------------------------
-#         with open('rezult.csv', 'a', encoding = 'utf-8-sig', newline = '') as file:
-#             writer = csv.writer(file, delimiter=';')
-#             # for item, article, description, in_stock, price, old_price, y in zip(name, article, description, in_stock, price, old_price, y):
-#                 # формируем строку для записи
-#             flatten = *[x.split(':')[1].strip() for x in description if x], price
-#             # flatten = [name, article] + [x.split(':')[1].strip() for x in description if isinstance(x, str) and x] + [in_stock, price, old_price, y]
-#             writer.writerow(flatten)
-#             print(flatten)
+        writer.writerow(flatten)
+        print(flatten)
