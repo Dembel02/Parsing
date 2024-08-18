@@ -30,7 +30,22 @@ for i in range(1, pagen + 1):
     for i in names:
         name = i.text
         # print(name)
-        name_ = [x.text for x in soup.find_all('a', class_ = 'name_item')]
+        # name_ = [x.text for x in soup.find_all('a', class_ = 'name_item')]
         description_list = [x.text.split('\n') for x in soup.find('div', class_ = 'description')]
         description = [item for sublist in description_list for item in sublist]
-        print(name, *[x.split(':')[1].strip() for x in description if ':' in x])
+        # price = [x.text for x in soup.find_all('p', class_ = 'price')]
+        
+        # print(name, *[x.split(':')[1].strip() for x in description if ':' in x], price)
+        # Находим все товары на странице
+        names = soup.find_all('a', class_='name_item')
+        # descriptions = soup.find_all('div', class_='description')
+        prices = soup.find_all('p', class_='price')
+
+        # Обрабатываем каждый товар
+        for name, price in zip(names, prices):
+            name_text = name.text.strip()
+            # description_text = description.text.strip().replace('\n', ' ')
+            price_text = price.text.strip()
+            print(name_text, *[x.split(':')[1].strip() for x in description if ':' in x], price_text)
+            # Записываем данные в CSV
+            # writer.writerow([name_text, description_text, price_text])
