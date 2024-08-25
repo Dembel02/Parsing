@@ -1,66 +1,66 @@
 [
     {
-        "name": "Vampire RGB,9 кнопок",
-        "brand": " Defender ",
-        "type": "  Мышь проводная ",
-        "connect": " USB",
-        "game": " да",
-        "price": "1610 руб"
+        "name": "Seagate ST2000VX008 SATA III 6 Gb/s",
+        "brand": " Seagate ",
+        "type": " 3.5",
+        "connect": " 2 Tb ",
+        "game": " 64 Mb",
+        "price": "12240 руб"
     },
     {
-        "name": "Defender Halo Z GM-430L",
-        "brand": " Defender ",
-        "type": " Мышь проводная ",
-        "connect": " USB",
-        "game": " да",
-        "price": "550 руб"
+        "name": "Toshiba HDWD105UZSVA",
+        "brand": " Toshiba  ",
+        "type": " 3.5",
+        "connect": " 500 Gb ",
+        "game": " 64 Mb",
+        "price": "6200 руб"
     },
     {
-        "name": "Defender Shark 2",
-        "brand": " Defender ",
-        "type": "  Мышь беспроводная ",
-        "connect": " USB",
-        "game": " да",
-        "price": "1480 руб"
+        "name": "SATAIII QK554AA",
+        "brand": "  HP  ",
+        "type": " 3.5",
+        "connect": "  500Gb   ",
+        "game": " 64 Mb",
+        "price": "14360 руб"
     },
     {
-        "name": "Defender sTarx GM-390L",
-        "brand": " Defender ",
-        "type": "  Мышь проводная ",
-        "connect": " USB",
-        "game": " да",
-        "price": "730 руб"
+        "name": "Seagate ST2000NM000A",
+        "brand": "  Seagate  ",
+        "type": " 3.5",
+        "connect": "  2 Tb  ",
+        "game": " 64 Mb",
+        "price": "18690 руб"
     },
     {
-        "name": "Defender Skull GM-180L",
-        "brand": " Defender ",
-        "type": "  Мышь проводная ",
-        "connect": " USB",
-        "game": " да",
-        "price": "485 руб"
+        "name": "HGST Ultrastar 7K2",
+        "brand": "  HGST  ",
+        "type": " 3.5",
+        "connect": "  2 Tb  ",
+        "game": " 128 Mb",
+        "price": "25430 руб"
     },
     {
-        "name": "Defender Killer GM-170L",
-        "brand": " Defender ",
-        "type": "  Мышь проводная ",
-        "connect": " USB",
-        "game": " да",
-        "price": "550 руб"
+        "name": "Seagate ST1000DM010",
+        "brand": "  Seagate  ",
+        "type": " 3.5",
+        "connect": "  1 Tb  ",
+        "game": " 64 Mb",
+        "price": "7180 руб"
     },
     {
-        "name": "Defender Ghost GM-190L",
-        "brand": " Defender ",
-        "type": "  Мышь проводная ",
-        "connect": " USB",
-        "game": " да",
-        "price": "600 руб"
+        "name": "Toshiba S300 Surveillance",
+        "brand": "  Toshiba  ",
+        "type": " 3.5",
+        "connect": "  4 Tb  ",
+        "game": " 128 Mb",
+        "price": "10710 руб"
     },
     {
-        "name": "Defender Witcher GM-990",
-        "brand": " Defender ",
-        "type": "  Мышь проводная ",
-        "connect": " USB",
-        "game": " да",
-        "price": "730 руб"
+        "name": "Toshiba MG04SCA20EE",
+        "brand": "  Toshiba  ",
+        "type": " 3.5",
+        "connect": "  2 Tb  ",
+        "game": " 128 Mb",
+        "price": "11010 руб"
     }
 ]
