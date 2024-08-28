@@ -20,6 +20,7 @@ soup = BeautifulSoup(response.text, 'lxml')
 # 3 -------------------------------------------------------------
 
 # 4 -------------------------------------------------------------
+
 pagen = int(soup.find('div', class_ = 'pagen').find_all('a')[-1].text)
 for i in range(1, pagen + 1):
     url = f'https://parsinger.ru/html/index1_page_{i}.html'
