@@ -25,23 +25,59 @@ response = requests.get(url=url)
 response.encoding = 'utf-8'
 soup = BeautifulSoup(response.text, 'lxml')
 
-name = [x.text.strip() for x in soup.find_all('a', class_ = 'name_item')]
-description = [x.text.strip().split('\n') for x in soup.find_all('div', class_ = 'description')]
-price = [x.text.strip() for x in soup.find_all('p', class_ = 'price')]
+pagen = int(soup.find('div', class_ = 'pagen').find_all('a')[-1].text)
+types = soup.find('div', class_ = 'nav_menu').find_all('a')
 
+list_href = [a.get('href') for a in types]
 result_json = []
+for j in range (1, ):
+    for i in range(1, pagen + 1):
+        url = f'https://parsinger.ru/html/index1_page_{i}.html'
+        response = requests.get(url=url)
+        response.encoding = 'utf-8'
+        soup = BeautifulSoup(response.text, 'lxml')
+    #     print(url)
+        item_card = soup.find_all('div', class_ = 'img_box')
+        # card_href = item_card.find_all('a')
+        
+        for i in item_card:
+            list_href.append(i.find('a').get('href'))
+            y = i.find('a').get('href')
+    # Парсинг данных из каждой карточки товара
+    for href in list_href:
+        url_1 = f'https://parsinger.ru/html/{href}'
+        response_1 = requests.get(url=url_1)
+        response_1.encoding = 'utf-8'
+        soup = BeautifulSoup(response_1.text, 'lxml')
 
-for list_item, price_item, name in zip (description, price, name):
-    result_json.append({
-        "Наименование": name,
-        "Бренд": [x.split(':')[1].strip() for x in list_item][0],
-        "Тип подключения": [x.split(':')[1].strip() for x in list_item][1],
-        "Цвет": [x.split(':')[1].strip() for x in list_item][2],
-        "Тип наушников": [x.split(':')[1].strip() for x in list_item][3],
-        "Цена": price_item
-    })
+# for href in list_href:
+#     url_1 = f'https://parsinger.ru/html/{href}'
+#     response_1 = requests.get(url=url_1)
+#     response_1.encoding = 'utf-8'
+#     soup = BeautifulSoup(response_1.text, 'lxml')
 
-with open('res_4.10.5.json', 'w', encoding= 'UTF-8') as file:
-    json.dump(result_json, file, indent=4, ensure_ascii=False)
+# for i in range(1, pagen + 1):
+#     url = f'https://parsinger.ru/html/index1_page_{i}.html'
+#     response = requests.get(url=url)
+#     response.encoding = 'utf-8'
+#     soup = BeautifulSoup(response.text, 'lxml')
+    name = [x.text.strip() for x in soup.find_all('a', class_ = 'name_item')]
+    description = [x.text.strip().split('\n') for x in soup.find_all('div', class_ = 'description')]
+    price = [x.text.strip() for x in soup.find_all('p', class_ = 'price')]
 
-print(result_json)
+    # result_json = []
+
+    for list_item, price_item, name in zip (description, price, name):
+        result_json.append({
+            "Наименование": name,
+            "Бренд": [x.split(':')[1].strip() for x in list_item][0],
+            "Тип подключения": [x.split(':')[1].strip() for x in list_item][1],
+            "Цвет": [x.split(':')[1].strip() for x in list_item][2],
+            "Тип наушников": [x.split(':')[1].strip() for x in list_item][3],
+            "Цена": price_item
+        })
+
+        with open('res_4.10.5.json', 'w', encoding= 'UTF-8') as file:
+            json.dump(result_json, file, indent=4, ensure_ascii=False)
+
+    print(list_href)
