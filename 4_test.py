@@ -50,13 +50,13 @@ for href in list_href:
             for list_item, price_item, name in zip (description, price, name):
                 result_json.append({
                     "Наименование": name,
-                    "Бренд": [x.split(':')[1].strip() for x in list_item][0],
-                    "Тип подключения": [x.split(':')[1].strip() for x in list_item][1],
-                    "Цвет": [x.split(':')[1].strip() for x in list_item][2],
-                    "Тип наушников": [x.split(':')[1].strip() for x in list_item][3],
+                    [x.split(':')[0].strip() for x in list_item][0] : [x.split(':')[1].strip() for x in list_item][0],
+                    [x.split(':')[0].strip() for x in list_item][1]: [x.split(':')[1].strip() for x in list_item][1],
+                    [x.split(':')[0].strip() for x in list_item][2]: [x.split(':')[1].strip() for x in list_item][2],
+                    [x.split(':')[0].strip() for x in list_item][3]: [x.split(':')[1].strip() for x in list_item][3],
                     "Цена": price_item
                 })
 
             with open('4.10.5.json', 'w', encoding= 'UTF-8') as file:
                     json.dump(result_json, file, indent=4, ensure_ascii=False)
-                # print(name)
+            print(description)
