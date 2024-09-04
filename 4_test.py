@@ -51,9 +51,9 @@ for href in list_href:
                 result_json.append({
                     "Наименование": name,
                     [x.split(':')[0].strip() for x in list_item][0] : [x.split(':')[1].strip() for x in list_item][0],
-                    [x.split(':')[0].strip() for x in list_item][1]: [x.split(':')[1].strip() for x in list_item][1],
-                    [x.split(':')[0].strip() for x in list_item][2]: [x.split(':')[1].strip() for x in list_item][2],
-                    [x.split(':')[0].strip() for x in list_item][3]: [x.split(':')[1].strip() for x in list_item][3],
+                    [x.split(':')[0].strip() for x in list_item][1] : [x.split(':')[1].strip() for x in list_item][1],
+                    [x.split(':')[0].strip() for x in list_item][2] : [x.split(':')[1].strip() for x in list_item][2],
+                    [x.split(':')[0].strip() for x in list_item][3] : [x.split(':')[1].strip() for x in list_item][3],
                     "Цена": price_item
                 })
 
