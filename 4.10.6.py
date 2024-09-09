@@ -14,6 +14,19 @@ response = requests.get(url=base_url)
 response.encoding = 'utf-8'
 soup = BeautifulSoup(response.text, 'lxml')
 
-pages = soup.find('div', class_ = 'pagen')
-page = int(pages.find_all('a')[-1].text)
-print(page)
+# pages = soup.find('div', class_ = 'pagen')
+# page = int(pages.find_all('a')[-1].text)
+# print(page)
+list_href = []
+for i in range(1, 32 + 1):
+    url = f'https://parsinger.ru/html/mobile/2/2_{i}.html'
+    response = requests.get(url=url)
+    response.encoding = 'utf-8'
+    soup = BeautifulSoup(response.text, 'lxml')
+    name = soup.find('p', id = 'p_header' ).text
+    # ul_description = soup.find('ul', )
+    description = [x.text.strip().split('\n') for x in soup.find_all('ul', id = 'description')]
+    # print(url)
+    # item_card = soup.find_all('div', class_ = 'img_box')
+    # card_href = item_card.find_all('a')
+    print(description)
