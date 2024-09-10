@@ -18,6 +18,7 @@ soup = BeautifulSoup(response.text, 'lxml')
 # page = int(pages.find_all('a')[-1].text)
 # print(page)
 list_href = []
+result_json = []
 for i in range(1, 32 + 1):
     url = f'https://parsinger.ru/html/mobile/2/2_{i}.html'
     response = requests.get(url=url)
@@ -29,4 +30,13 @@ for i in range(1, 32 + 1):
     # print(url)
     # item_card = soup.find_all('div', class_ = 'img_box')
     # card_href = item_card.find_all('a')
-    print(description)
+    # print(description)
+    for list_item in description:
+                result_json.append({
+                    
+                    [x.split(':')[0].strip() for x in list_item][0] : [x.split(':')[1].strip() for x in list_item][0],
+                    [x.split(':')[0].strip() for x in list_item][1] : [x.split(':')[1].strip() for x in list_item][1],
+                    [x.split(':')[0].strip() for x in list_item][2] : [x.split(':')[1].strip() for x in list_item][2],
+                    [x.split(':')[0].strip() for x in list_item][3] : [x.split(':')[1].strip() for x in list_item][3],
+                    })
+                print([x.split(':')[0].strip() for x in list_item][0])
