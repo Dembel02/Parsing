@@ -50,6 +50,6 @@ for i in range(1, 32 + 1):
                     'old_price' : old_price,
                     'link' : url
                     })
-                with open('4.10.6.json', 'w', encoding= 'UTF-8') as file:
-                    json.dump(res, file, indent=4, ensure_ascii=False)
+    with open('4.10.6.json', 'w', encoding= 'UTF-8') as file:
+        json.dump(result_json, file, indent=4, ensure_ascii=False)
 print(result_json)
