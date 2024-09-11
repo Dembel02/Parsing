@@ -25,18 +25,31 @@ for i in range(1, 32 + 1):
     response.encoding = 'utf-8'
     soup = BeautifulSoup(response.text, 'lxml')
     name = soup.find('p', id = 'p_header' ).text
+    article = soup.find('p', class_ = 'article').text
+    in_stock = soup.find('span', id = 'in_stock').text
+    price = soup.find('span', id = 'price').text
+    old_price = soup.find('span', id = 'old_price')
+
     # ul_description = soup.find('ul', )
     description = [x.text.strip().split('\n') for x in soup.find_all('ul', id = 'description')]
     # print(url)
     # item_card = soup.find_all('div', class_ = 'img_box')
     # card_href = item_card.find_all('a')
     # print(description)
-    for list_item in description:
+    for nane, list_item in zip(name, description):
                 result_json.append({
-                    
-                    [x.split(':')[0].strip() for x in list_item][0] : [x.split(':')[1].strip() for x in list_item][0],
-                    [x.split(':')[0].strip() for x in list_item][1] : [x.split(':')[1].strip() for x in list_item][1],
-                    [x.split(':')[0].strip() for x in list_item][2] : [x.split(':')[1].strip() for x in list_item][2],
-                    [x.split(':')[0].strip() for x in list_item][3] : [x.split(':')[1].strip() for x in list_item][3],
+                    'Наименование' : name,
+                    'article' : article.split(':')[1].strip(),
+                    'description' : description,
+                    # [x.split(':')[0].strip() for x in list_item][0] : [x.split(':')[1].strip() for x in list_item][0],
+                    # [x.split(':')[0].strip() for x in list_item][1] : [x.split(':')[1].strip() for x in list_item][1],
+                    # [x.split(':')[0].strip() for x in list_item][2] : [x.split(':')[1].strip() for x in list_item][2],
+                    # [x.split(':')[0].strip() for x in list_item][3] : [x.split(':')[1].strip() for x in list_item][3],
+                    'count' : in_stock.split(':')[1].strip(),
+                    'price' : price,
+                    'old_price' : old_price,
+                    'link' : url
                     })
-                print([x.split(':')[0].strip() for x in list_item][0])
+                with open('4.10.6.json', 'w', encoding= 'UTF-8') as file:
+                    json.dump(res, file, indent=4, ensure_ascii=False)
+print(result_json)
