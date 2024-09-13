@@ -14,9 +14,6 @@ response = requests.get(url=base_url)
 response.encoding = 'utf-8'
 soup = BeautifulSoup(response.text, 'lxml')
 
-# pages = soup.find('div', class_ = 'pagen')
-# page = int(pages.find_all('a')[-1].text)
-# print(page)
 list_href = []
 result_json = []
 for i in range(1, 32 + 1):
@@ -30,21 +27,13 @@ for i in range(1, 32 + 1):
     price = soup.find('span', id = 'price').text
     old_price = soup.find('span', id = 'old_price')
 
-    # ul_description = soup.find('ul', )
     description = [x.text.strip().split('\n') for x in soup.find_all('ul', id = 'description')]
-    # print(url)
-    # item_card = soup.find_all('div', class_ = 'img_box')
-    # card_href = item_card.find_all('a')
-    # print(description)
+
     for nane, list_item in zip(name, description):
                 result_json.append({
                     'Наименование' : name,
                     'article' : article.split(':')[1].strip(),
                     'description' : description,
-                    # [x.split(':')[0].strip() for x in list_item][0] : [x.split(':')[1].strip() for x in list_item][0],
-                    # [x.split(':')[0].strip() for x in list_item][1] : [x.split(':')[1].strip() for x in list_item][1],
-                    # [x.split(':')[0].strip() for x in list_item][2] : [x.split(':')[1].strip() for x in list_item][2],
-                    # [x.split(':')[0].strip() for x in list_item][3] : [x.split(':')[1].strip() for x in list_item][3],
                     'count' : in_stock.split(':')[1].strip(),
                     'price' : price,
                     'old_price' : old_price,
