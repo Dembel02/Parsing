@@ -26,6 +26,7 @@ for i in range(1, 33):  # Достаточно до 32 включительно
     description = [li.text.strip() for li in soup.find('ul', id='description').find_all('li')] 
 
     result_json.append({
+        
         'Наименование': name,
         'article': article.split(':')[1].strip(),
         'description': description,
