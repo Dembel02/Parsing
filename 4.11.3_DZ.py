@@ -3,21 +3,22 @@ import requests
 url = 'https://parsinger.ru/downloads/get_json/res.json'
 
 response = requests.get(url=url).json()
-watch = 0
-mobile = 0
-mouse = 0
-hdd = 0
-headphones = 0
 
+
+# Создаем пустой словарь для хранения сумм по категориям
+categories = {}
+
+# Подсчитываем общее количество товаров в каждой категории
 for item in response:
-    if item["categories"] == 'watch':
-        watch += 1
-    elif item["categories"] == 'mobile':
-        mobile += 1
-    elif item["categories"] == 'mouse':
-        mouse += 1
-    elif item["categories"] == 'hdd':
-        hdd += 1
-    elif item["categories"] == 'headphones':
-        headphones += 1
-print(watch)
+    category = item['categories']
+    count = int(item['count'])
+    
+    # Если категория уже есть в словаре, добавляем к её значению count
+    if category in categories:
+        categories[category] += count
+    else:
+        # Если категории ещё нет, создаём её и присваиваем ей count
+        categories[category] = count
+
+# Выводим результат
+print(categories)
