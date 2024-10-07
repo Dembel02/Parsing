@@ -59,7 +59,7 @@ import face_recognition
 import os
 
 # Путь к входному видеофайлу и папке для сохранения
-input_video_path = r'C:\Projects\openCV\env\video\IMG_5158.MOV'
+input_video_path = r'C:\Projects\openCV\env\video\1696500480KZF31_1726321574_151.mp4'
 output_folder = r'C:\Projects\openCV\env\face'
 output_video_path = os.path.join(output_folder, 'processed_video.mp4')
 
