@@ -1,5 +1,5 @@
 import cv2
-import face_recognition
+import face_recognition_script
 import os
 
 # Путь к входному видеофайлу и папке для сохранения
@@ -36,7 +36,7 @@ while True:
     rgb_frame = frame[:, :, ::-1]
 
     # Поиск лиц на текущем кадре
-    face_locations = face_recognition.face_locations(rgb_frame)
+    face_locations = face_recognition_script.face_locations(rgb_frame)
 
     # Если лица найдены, сохраняем кадр
     if face_locations:
