@@ -2,7 +2,7 @@ import cv2
 import face_recognition_script
 
 # Загрузите видеофайл
-video = cv2.VideoCapture('video.mp4')  # замените 'video.mp4' на путь к вашему видео
+video = cv2.VideoCapture(r'C:\Projects\openCV\env\video\doc_2024-09-14_19-31-55.mp4')  # замените 'video.mp4' на путь к вашему видео
 
 # Инициализируйте список лиц и соответствующих им идентификаторов (человека)
 faces = []
