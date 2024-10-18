@@ -38,7 +38,7 @@ for video_file in os.listdir(video_folder_path):
             rgb_frame = frame[:, :, ::-1]
 
             # Detect faces in the frame
-            face_locations = face_recognition.face_locations(rgb_frame)
+            face_locations = face_recognition_script.face_locations(rgb_frame)
 
             # Loop through each detected face
             for face_location in face_locations:
