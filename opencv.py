@@ -1,5 +1,5 @@
 import cv2
-import face_recognition
+import face_recognition_script
 
 # Загрузите видеофайл
 video = cv2.VideoCapture(r'C:\Projects\openCV\env\video\doc_2024-09-14_19-31-55.mp4')  # замените 'video.mp4' на путь к вашему видео
@@ -16,8 +16,8 @@ def save_known_faces():
         if not ret:
             break
         rgb_frame = frame[:, :, ::-1]
-        face_locations = face_recognition.face_locations(rgb_frame)
-        face_encodings = face_recognition.face_encodings(rgb_frame, face_locations)
+        face_locations = face_recognition_script.face_locations(rgb_frame)
+        face_encodings = face_recognition_script.face_encodings(rgb_frame, face_locations)
         for face_encoding in face_encodings:
             faces.append(face_encoding)
         for (top, right, bottom, left), faceEncoding in zip(face_locations, face_encodings):
@@ -38,11 +38,11 @@ def detect_faces():
         if not ret:
             break
         rgb_frame = frame[:, :, ::-1]
-        face_locations = face_recognition.face_locations(rgb_frame)
-        face_encodings = face_recognition.face_encodings(rgb_frame, face_locations)
+        face_locations = face_recognition_script.face_locations(rgb_frame)
+        face_encodings = face_recognition_script.face_encodings(rgb_frame, face_locations)
         face_names = []
         for face_encoding in face_encodings:
-            matches = face_recognition.compare_faces(known_face_encodings, face_encoding)
+            matches = face_recognition_script.compare_faces(known_face_encodings, face_encoding)
             name = "Unknown"
             if True in matches:
                 first_match_index = matches.index(True)

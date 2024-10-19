@@ -1,6 +1,6 @@
 import os
 import cv2
-import face_recognition
+import face_recognition_script
 
 # Set the path to the folder containing the videos
 video_folder_path = '/path/to/videos'
@@ -13,7 +13,7 @@ if not os.path.exists(recognized_faces_folder_path):
     os.makedirs(recognized_faces_folder_path)
 
 # Load the face recognition model
-face_recognition_model = face_recognition.FaceRecognition()
+face_recognition_model = face_recognition_script.FaceRecognition()
 
 # Loop through all videos in the video folder
 for video_file in os.listdir(video_folder_path):
