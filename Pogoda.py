@@ -8,6 +8,6 @@ response = requests.get(url=url)
 response.encoding = 'utf-8'
 soup = BeautifulSoup(response.text, 'html.parser')
 
-
-print(soup)
+pogoda = soup.find('div') #.text
+print(pogoda.text)
 
